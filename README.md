@@ -1,6 +1,6 @@
-## IaC - LAMP in AWS
+# IaC - LAMP in AWS
 
-# Problem Statement
+### Problem Statement
 
 * Setup a LAMP Stack on a AWS Cloud.
 * For Linux Operating System distribution assume Ubuntu.
