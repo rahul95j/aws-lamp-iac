@@ -3,7 +3,7 @@ resource "aws_lb" "test" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${aws_security_group.allow_http_lb.id}"]
-#  subnets            = [for subnet in aws_subnet.public : subnet.id]
+  subnets            = [for subnet in aws_subnet.public : subnet.id]
 
   enable_deletion_protection = true
 
@@ -19,7 +19,22 @@ resource "aws_lb" "test" {
 }
 
 provider "aws" {
-  region = "ap-south-1"
+  region = var.region
+}
+
+resource "aws_lb" "example" {
+  name               = "example"
+  load_balancer_type = "network"
+
+  subnet_mapping {
+    subnet_id     = aws_subnet.example1.id
+    allocation_id = aws_eip.example1.id
+  }
+
+  subnet_mapping {
+    subnet_id     = aws_subnet.example2.id
+    allocation_id = aws_eip.example2.id
+  }
 }
 
 #SG for allowing HTTP requests

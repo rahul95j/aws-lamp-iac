@@ -1,7 +1,8 @@
 resource "aws_instance" "webserver" {
-  ami           = "ami-0851b76e8b1bce90b"
+  ami           = var.ami
   instance_type = "t2.micro"
-  #key_name
+  # enter key_name here later
+
   vpc_security_group_ids = ["${aws_security_group.allow_http.id}", "${aws_security_group.allow_ssh.id}"]
   tags = {
     Name        = "webserver"
@@ -21,7 +22,7 @@ resource "aws_instance" "webserver" {
 provider "aws" {
   region = "ap-south-1"
 }
-
+#SG for allowing HTTP requests
 resource "aws_security_group" "allow_http" {
   name        = "allow_http"
   description = "Allow HTTP inbound traffic"
@@ -46,7 +47,7 @@ resource "aws_security_group" "allow_http" {
   }
 }
 
-
+#SG for allowing SSH
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "Allow ssh inbound traffic"
