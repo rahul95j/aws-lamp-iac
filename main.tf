@@ -3,11 +3,11 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "./vpc"
+  source = "./modules/vpc"
 }
 
-module "load_balancers" {
-  source = "./alb"
+module "alb" {
+  source = "./modules/alb"
   public_subnet_1_id = "${module.vpc.public_subnet_1_id}"
   public_subnet_2_id = "${module.vpc.public_subnet_2_id}"
   allow_ssh_sg = "${module.vpc.allow_ssh_sg}"

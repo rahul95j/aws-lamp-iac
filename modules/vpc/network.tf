@@ -40,7 +40,7 @@ resource "aws_security_group" "allow_ssh" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
+  vpc_id = aws_vpc.webapp-vpc.id
   tags = {
     Name = "allow_ssh"
   }
@@ -69,12 +69,12 @@ resource "aws_security_group" "allow_http" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
+  vpc_id = aws_vpc.webapp-vpc.id
   tags = {
     Name = "allow_http"
   }
 }
 
-output "allow_ssh_sg" {
-  value = "${aws_security_group.allow_ssh.id}"
+output "allow_http_sg" {
+  value = "${aws_security_group.allow_http.id}"
 }

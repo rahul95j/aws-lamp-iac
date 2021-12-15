@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "${var.region}"
+}
+
 # Create VPC
 
 resource "aws_vpc" "webapp-vpc" {
