@@ -1,10 +1,15 @@
 provider "aws" {
-  region = "ap-south-1"
+  region = "${var.region}"
 }
 
-resource "aws_iam_user" "admin-user" {
-  name = "dev1"
-  tags = {
-    Description = "Front-End"
-  }
+module "vpc" {
+  source = "./vpc"
+}
+
+module "load_balancers" {
+  source = "./alb"
+  public_subnet_1_id = "${module.vpc.public_subnet_1_id}"
+  public_subnet_2_id = "${module.vpc.public_subnet_2_id}"
+  allow_ssh_sg = "${module.vpc.allow_ssh_sg}"
+  allow_http_sg = "${module.vpc.allow_http_sg}"
 }
