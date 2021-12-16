@@ -47,7 +47,7 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 output "allow_ssh_sg" {
-  value = "${aws_security_group.allow_ssh.id}"
+  value = aws_security_group.allow_ssh.id
 }
 
 #SG for allowing HTTP requests
@@ -76,5 +76,5 @@ resource "aws_security_group" "allow_http" {
 }
 
 output "allow_http_sg" {
-  value = "${aws_security_group.allow_http.id}"
+  value = aws_security_group.allow_http.id
 }

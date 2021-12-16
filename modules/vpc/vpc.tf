@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "${var.region}"
+  region = var.region
 }
 
 # Create VPC
@@ -14,7 +14,7 @@ resource "aws_vpc" "webapp-vpc" {
 }
 
 output "vpc_id" {
-  value = "${aws_vpc.webapp-vpc.id}"
+  value = aws_vpc.webapp-vpc.id
 }
 
 resource "aws_internet_gateway" "webapp-igw" {
@@ -57,7 +57,7 @@ resource "aws_subnet" "webapp-subnet-public-1" {
 }
 
 output "public_subnet_1_id" {
-  value = "${aws_subnet.webapp-subnet-public-1.id}"
+  value = aws_subnet.webapp-subnet-public-1.id
 }
 
 resource "aws_subnet" "webapp-subnet-public-2" {
@@ -71,5 +71,5 @@ resource "aws_subnet" "webapp-subnet-public-2" {
 }
 
 output "public_subnet_2_id" {
-  value = "${aws_subnet.webapp-subnet-public-2.id}"
+  value = aws_subnet.webapp-subnet-public-2.id
 }
