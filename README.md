@@ -9,3 +9,9 @@
 * Write Terraform scripts to create the infrastructre for the above stack.
 * Use Ansible/Chef to provision the LAMP stack on the infrastructure.
 * Create a Highly Available setup
+
+
+### Assumptions
+
+* A single t2.micro instance will be enough to support incoming traffic for the application
+* TLS security certificates aren't required
