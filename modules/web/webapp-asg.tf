@@ -4,7 +4,7 @@ resource "aws_launch_template" "webapp-launch-template" {
   instance_type          = "t2.micro"
   vpc_security_group_ids = ["${var.allow_ssh_sg}", "${var.allow_http_sg}"]
 
-  user_data = filebase64("C:/Users/josepr5/Documents/Code Projects/aws-lamp-iac/modules/web/userdata.sh")
+  user_data = filebase64("${path.module}/userdata.sh")
 
   tags = {
     Name        = "webserver"

@@ -1,0 +1,1 @@
+# add bastion host to ssh into DB

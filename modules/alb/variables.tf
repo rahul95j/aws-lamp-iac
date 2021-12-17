@@ -10,9 +10,9 @@ variable "webapp-asg" {}
 
 variable "alb_listener_port" {
   default = 80
+  type    = number
 }
 variable "alb_listener_protocol" {
   default = "HTTP"
   type    = string
 }
-

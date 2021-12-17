@@ -6,6 +6,13 @@ module "vpc" {
   source = "./modules/vpc"
 }
 
+module "webapp-db" {
+  source              = "./modules/db"
+  private_subnet_1_id = module.vpc.private_subnet_1_id
+  private_subnet_2_id = module.vpc.private_subnet_2_id
+  allow_sql_sg        = module.vpc.allow_sql_sg
+}
+
 module "asg" {
   source             = "./modules/web"
   region             = var.region

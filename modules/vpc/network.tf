@@ -78,3 +78,40 @@ resource "aws_security_group" "allow_http" {
 output "allow_http_sg" {
   value = aws_security_group.allow_http.id
 }
+
+#SG for allowing DB requests
+resource "aws_security_group" "allow_sql" {
+  name        = "allow_sql"
+  description = "Allow DB inbound traffic"
+
+  ingress {
+    description = "TCP from EC2"
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = [var.subnet_three_cidr, var.subnet_four_cidr]
+  }
+
+  ingress {
+    description = "SSH from EC2"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [var.subnet_three_cidr, var.subnet_four_cidr]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  vpc_id = aws_vpc.webapp-vpc.id
+  tags = {
+    Name = "allow_sql"
+  }
+}
+
+output "allow_sql_sg" {
+  value = aws_security_group.allow_sql.id
+}
