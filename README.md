@@ -16,7 +16,7 @@
 * A single t2.micro instance will be enough to support incoming traffic for the application
 * TLS security certificates aren't required
 
-### Folder Structure
+### Modules Structure
 
 * **vpc** - Network components module - vpc, subnets, Igw and route tables
 * **db** - AWS RDS(MySQL) module
