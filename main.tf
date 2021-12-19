@@ -20,6 +20,7 @@ module "asg" {
   allow_http_sg      = module.vpc.allow_http_sg
   public_subnet_1_id = module.vpc.public_subnet_1_id
   public_subnet_2_id = module.vpc.public_subnet_2_id
+  db_endpoint        = module.webapp-db.db_endpoint
 }
 
 module "alb" {

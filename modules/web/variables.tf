@@ -10,14 +10,15 @@ variable "allow_http_sg" {}
 variable "public_subnet_1_id" {}
 variable "public_subnet_2_id" {}
 
+variable "db_endpoint" {}
+
+data "template_file" "userdata" {
+  template = filebase64("${path.module}/userdata.sh")
+  vars = {
+    db_endpoint = var.db_endpoint
+  }
+}
+
 # variable "key_name" {
 #   description = "SSH Key used for the servers."
-# }
-
-# variable "subnet_id" {
-#   description = "Subnet ID information for the Web servers."
-# }
-
-# variable "vpc_id" {
-#   description = "VPC ID information for TF servers."
 # }
