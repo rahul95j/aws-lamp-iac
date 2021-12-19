@@ -15,3 +15,5 @@
 
 * A single t2.micro instance will be enough to support incoming traffic for the application
 * TLS security certificates aren't required
+
+![alt text](https://github.com/TribalArtifactor/aws-lamp-iac/blob/main/AWS-Architecture.png?raw=true)

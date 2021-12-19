@@ -13,10 +13,6 @@ resource "aws_vpc" "webapp-vpc" {
   }
 }
 
-output "vpc_id" {
-  value = aws_vpc.webapp-vpc.id
-}
-
 resource "aws_internet_gateway" "webapp-igw" {
   vpc_id = aws_vpc.webapp-vpc.id
   tags = {
@@ -36,12 +32,6 @@ resource "aws_subnet" "webapp-subnet-private-1" {
   }
 }
 
-
-output "private_subnet_1_id" {
-  value = aws_subnet.webapp-subnet-private-1.id
-}
-
-
 resource "aws_subnet" "webapp-subnet-private-2" {
   vpc_id                  = aws_vpc.webapp-vpc.id
   cidr_block              = var.subnet_two_cidr
@@ -51,12 +41,6 @@ resource "aws_subnet" "webapp-subnet-private-2" {
     Name = "webapp-subnet-private-2"
   }
 }
-
-
-output "private_subnet_2_id" {
-  value = aws_subnet.webapp-subnet-private-2.id
-}
-
 
 resource "aws_subnet" "webapp-subnet-public-1" {
   vpc_id                  = aws_vpc.webapp-vpc.id
@@ -68,10 +52,6 @@ resource "aws_subnet" "webapp-subnet-public-1" {
   }
 }
 
-output "public_subnet_1_id" {
-  value = aws_subnet.webapp-subnet-public-1.id
-}
-
 resource "aws_subnet" "webapp-subnet-public-2" {
   vpc_id                  = aws_vpc.webapp-vpc.id
   cidr_block              = var.subnet_four_cidr
@@ -80,8 +60,4 @@ resource "aws_subnet" "webapp-subnet-public-2" {
   tags = {
     Name = "webapp-subnet-public-2"
   }
-}
-
-output "public_subnet_2_id" {
-  value = aws_subnet.webapp-subnet-public-2.id
 }

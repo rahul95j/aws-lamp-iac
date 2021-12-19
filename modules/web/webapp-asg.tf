@@ -23,7 +23,3 @@ resource "aws_autoscaling_group" "webapp-asg" {
     version = "$Latest"
   }
 }
-
-output "webapp-asg" {
-  value = aws_autoscaling_group.webapp-asg.id
-}
