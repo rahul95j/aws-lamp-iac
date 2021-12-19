@@ -23,4 +23,4 @@
 * **alb** - Application Load Balancer module 
 * **web** - AutoScaling Group module for spinning up EC2 instances 
 
-![alt text](https://github.com/TribalArtifactor/aws-lamp-iac/blob/main/AWS-Architecture.png?raw=true)
+![alt text](https://github.com/TribalArtifactor/aws-lamp-iac/blob/main/AWS-Architecture.png#gh-dark-mode-only)
