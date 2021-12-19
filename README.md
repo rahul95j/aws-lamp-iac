@@ -16,4 +16,11 @@
 * A single t2.micro instance will be enough to support incoming traffic for the application
 * TLS security certificates aren't required
 
+### Folder Structure
+
+* **vpc** - Network components module - vpc, subnets, Igw and route tables
+* **db** - AWS RDS(MySQL) module
+* **alb** - Application Load Balancer module 
+* **web** - AutoScaling Group module for spinning up EC2 instances 
+
 ![alt text](https://github.com/TribalArtifactor/aws-lamp-iac/blob/main/AWS-Architecture.png?raw=true)
