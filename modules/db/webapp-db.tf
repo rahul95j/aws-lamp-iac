@@ -29,13 +29,13 @@ resource "aws_db_instance" "webapp-db" {
   }
 }
 
-# resource "aws_db_instance" "webapp-db-replica" {
-#   name                   = "webapp-db-replica"
-#   identifier             = "webapp-db-replica"
-#   replicate_source_db    = aws_db_instance.webapp-db.identifier
-#   instance_class         = "db.t2.micro"
-#   apply_immediately      = true
-#   skip_final_snapshot    = true
-#   vpc_security_group_ids = [var.allow_sql_sg]
-#   parameter_group_name   = "default.mysql8.0"
-# }
+resource "aws_db_instance" "webapp-db-replica" {
+  name                   = "webapp-db-replica"
+  identifier             = "webapp-db-replica"
+  replicate_source_db    = aws_db_instance.webapp-db.identifier
+  instance_class         = "db.t2.micro"
+  apply_immediately      = true
+  skip_final_snapshot    = true
+  vpc_security_group_ids = [var.allow_sql_sg]
+  parameter_group_name   = "default.mysql8.0"
+}
