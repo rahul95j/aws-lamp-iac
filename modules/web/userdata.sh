@@ -47,7 +47,7 @@ sudo service apache2 restart
 # conn = pymysql.connect(
 #         user='admin',
 #         passwd='password',
-#         host='mysqldb.cwcqnl6kkz7p.ap-south-1.rds.amazonaws.com')
+#         host='\$${var.db_endpoint}')
 # c = conn.cursor()
 
 # # Create table and Insert some example data.
