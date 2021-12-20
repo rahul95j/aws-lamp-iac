@@ -2,69 +2,68 @@
 ufw disable
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install python3-pip -y
-sudo pip3 install pymysql -y
-sudo ln -s /usr/bin/python3 /usr/bin/python
-sudo apt install -y apache2 
+# sudo apt install python3-pip -y
+# sudo pip3 install pymysql
+# sudo ln -s /usr/bin/python3 /usr/bin/python
+# sudo apt install -y apache2
 systemctl start apache2
 systemctl enable apache2
-sudo mkdir /var/www/test
 sudo a2dismod mpm_event
 sudo a2enmod mpm_prefork cgi
+sudo service apache2 restart
+# cat /dev/null > /etc/apache2/sites-enabled/000-default.conf
 
-cat <<EOT >> /var/www/test/index.py
-#!/usr/bin/env python
+# sudo cat <<EOT >> /etc/apache2/sites-enabled/000-default.conf
+# <VirtualHost *:80>
+#     <Directory /var/www/test/>
+#         Options +ExecCGI
+#         DirectoryIndex index.py
+#     </Directory>
+#     AddHandler cgi-script .py
 
-import cgitb
-cgitb.enable()
+#     ServerAdmin webmaster@localhost
+#     DocumentRoot /var/www/test
 
-# Print necessary headers.
-print("Content-Type: text/html")
-print()
+#     ErrorLog ${APACHE_LOG_DIR}/error.log
+#     CustomLog ${APACHE_LOG_DIR}/access.log combined
+# </VirtualHost>
+# EOT
 
-# Connect to the database.
-import pymysql
-conn = pymysql.connect(
-        user='admin',
-        passwd='password',
-        host=\$${var.db_endpoint})
-c = conn.cursor()
 
-# Create table and Insert some example data.
-c.execute("CREATE DATABASE IF NOT EXISTS mysqldb")
-c.execute("USE mysqldb")
-try:
-    c.execute("CREATE TABLE numbers (num INT, word VARCHAR(20))")
-except:
-    print("")
-c.execute("INSERT INTO numbers VALUES (1, 'One!')")
-c.execute("INSERT INTO numbers VALUES (2, 'Two!')")
-c.execute("INSERT INTO numbers VALUES (3, 'Three!')")
-conn.commit()
+# cat /dev/null > /var/www/test/index.py
+# sudo chmod 755 /var/www/test/index.py
+# sudo cat <<EOT >> /var/www/test/index.py
+# #!/usr/bin/env python
 
-# Print the contents of the database.
-c.execute("SELECT * FROM numbers")
+# import cgitb
+# cgitb.enable()
 
-print([(r[0], r[1]) for r in c.fetchall()])
-EOT
+# # Print necessary headers.
+# print("Content-Type: text/html")
+# print()
 
-sudo chmod 755 /var/www/test/index.py
+# # Connect to the database.
+# import pymysql
+# conn = pymysql.connect(
+#         user='admin',
+#         passwd='password',
+#         host='mysqldb.cwcqnl6kkz7p.ap-south-1.rds.amazonaws.com')
+# c = conn.cursor()
 
-cat /dev/null > /etc/apache2/sites-enabled/000-default.conf
+# # Create table and Insert some example data.
+# c.execute("CREATE DATABASE IF NOT EXISTS mysqldb")
+# c.execute("USE mysqldb")
+# try:
+#     c.execute("CREATE TABLE numbers (num INT, word VARCHAR(20))")
+# except:
+#     print("")
+# c.execute("INSERT INTO numbers VALUES (1, 'One!')")
+# c.execute("INSERT INTO numbers VALUES (2, 'Two!')")
+# c.execute("INSERT INTO numbers VALUES (3, 'Three!')")
+# conn.commit()
 
-cat <<EOT >> /etc/apache2/sites-enabled/000-default.conf
-<VirtualHost *:80>
-    <Directory /var/www/test/>
-        Options +ExecCGI
-        DirectoryIndex index.py
-    </Directory>
-AddHandler cgi-script .py
+# # Print the contents of the database.
+# c.execute("SELECT * FROM numbers")
 
-ServerAdmin webmaster@localhost
-DocumentRoot /var/www/test
-
-ErrorLog ${APACHE_LOG_DIR}/error.log
-CustomLog ${APACHE_LOG_DIR}/access.log combined
-EOT
-
-systemctl restart apache2
+# print([(r[0], r[1]) for r in c.fetchall()])
+# EOT

@@ -1,7 +1,7 @@
 variable "ami" {
-  default     = "ami-0851b76e8b1bce90b"
+  default     = "ami-031b91f37d0bd432d"
   type        = string
-  description = "Ubuntu 20.04 in ap-south-1"
+  description = "Custom AMI for Ubuntu 20.04 in ap-south-1"
 }
 
 variable "region" {}
