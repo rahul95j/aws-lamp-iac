@@ -41,9 +41,9 @@ It then prints all contents of the database. Entries will be added everytime a H
 
 To reduce the lines of bootstrap code and improve boot time I created a custom AMI from the EC2 instance spun up by terraform. It contains the following modifications from standard ubuntu AMI:
 * Libraries Installed
-  * apache2
-  * python3-pip
-  * pymysql
+  - apache2
+  - python3-pip
+  - pymysql
 * Disabled ufw
 
 ### **Terraform Output** 
@@ -53,9 +53,9 @@ To reduce the lines of bootstrap code and improve boot time I created a custom A
 ### Next Steps
 
 * Improve security and reusability 
- * Use user inputted credentials for passing credentials
- * Deploy ASG in private subnet
- * Provide only required permissions to AWS services
+ - Use user inputted credentials for passing credentials
+ - Deploy ASG in private subnet
+ - Provide only required permissions to AWS services
 * Create NAT gateway/instance and bastion host. 
 * Use S3 to store tfstate file 
 * Create ansible script to perform update
