@@ -46,6 +46,9 @@ To reduce the lines of bootstrap code and improve boot time I created a custom A
   * pymysql
 * Disabled ufw
 
+### **Terraform Output**
+![alt text](terraform_graph.png?raw=true)
+
 ### Next Steps
 
 * Improve security and reusability 
@@ -57,4 +60,3 @@ To reduce the lines of bootstrap code and improve boot time I created a custom A
 * Create ansible script to perform update
 * Modify application to deploy WordPress site
 * Add capability to utilize read replica/RDS standby in case of failures
-* 
