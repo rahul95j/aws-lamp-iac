@@ -2,15 +2,16 @@
 ufw disable
 sudo apt update -y
 sudo apt upgrade -y
-# sudo apt install python3-pip -y
-# sudo pip3 install pymysql
-# sudo ln -s /usr/bin/python3 /usr/bin/python
-# sudo apt install -y apache2
 systemctl start apache2
 systemctl enable apache2
 sudo a2dismod mpm_event
 sudo a2enmod mpm_prefork cgi
 sudo service apache2 restart
+
+# sudo apt install python3-pip -y
+# sudo pip3 install pymysql
+# sudo ln -s /usr/bin/python3 /usr/bin/python
+# sudo apt install -y apache2
 # cat /dev/null > /etc/apache2/sites-enabled/000-default.conf
 
 # sudo cat <<EOT >> /etc/apache2/sites-enabled/000-default.conf
@@ -35,6 +36,7 @@ sudo service apache2 restart
 # sudo cat <<EOT >> /var/www/test/index.py
 # #!/usr/bin/env python
 
+##CGI handler used to redirect HTTP request to run py script
 # import cgitb
 # cgitb.enable()
 
