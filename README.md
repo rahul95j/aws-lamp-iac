@@ -46,7 +46,8 @@ To reduce the lines of bootstrap code and improve boot time I created a custom A
   * pymysql
 * Disabled ufw
 
-### **Terraform Output**
+### **Terraform Output** 
+(Click to Expand)
 ![alt text](terraform_graph.png?raw=true)
 
 ### Next Steps
